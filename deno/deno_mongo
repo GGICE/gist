@@ -1,0 +1,16 @@
+问题:
+
+INFO downloading deno plugin "deno_mongo" from "https://github.com/manyuanrong/deno_mongo/releases/download/v0.10.0/libdeno_mongo.so" 
+
+无法下载
+
+解决方法：
+
+根据
+
+```
+https://github.com/manyuanrong/deno_mongo/blob/master/ts/util.ts
+export { prepare } from "https://deno.land/x/plugin_prepare@v0.7.2/mod.ts";
+```
+
+找到本地 prepare, 打 log `console.log('cacheFileName', cacheFileName, localPath);` 获取缓存文件名，手动下载该依赖到本地更名为缓存文件名
